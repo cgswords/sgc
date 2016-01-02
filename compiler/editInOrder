@@ -1,0 +1,14 @@
+vim \
+    desugar-input.ss \
+    purify-assignments.ss \
+    lift-lambdas.ss \
+    convert-closures.ss \
+    convert-representation.ss \
+    flatten-let.ss \
+    verify-uil.ss \
+    cform-introduction.ss \
+    heap-allocator.ss \
+    enforce-conventions.ss \
+    stackframe-allocator.ss \
+    register-allocator.ss \
+    x86-generation.ss

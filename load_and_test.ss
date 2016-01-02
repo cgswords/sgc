@@ -1,0 +1,6 @@
+(import (framework testing)) 
+(import (framework helpers))
+(import (compiler compile))
+(unique-name-count 1000)
+(max-frame-var 1000)
+(test-all)
