@@ -1,16 +1,5 @@
 #ifndef COLLECTOR_H
 #define COLLECTOR_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/mman.h>
-#include <signal.h>
-#include <ucontext.h>
-#include <errno.h>
-#include <string.h>
-#include <fcntl.h>
 #include "tags.h"
 
 typedef struct {
@@ -21,15 +10,16 @@ typedef struct {
   ptr *sp;
 } memModel;
 
+/* This is the interface that the runtime is allowed to use */
 void gc_init(void); 
-void gc_cleanup(void);
+void gc_cleanup(void); 
 ptr* getStack(void); 
 ptr* getHeap(void);
 ptr* getLimit(void);
 void checkAddr(ptr* addr);
 
-/* The interface for the generated code */
+/* This is the interface for the compiled code */
 memModel *mem;
-ptr* collect(ptr* sp, ptr* ap, long size);
+ptr* collect(ptr *sp, ptr *ap, long size);
 
-#endif //COLLECTOR_H
+#endif

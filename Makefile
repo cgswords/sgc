@@ -14,7 +14,7 @@
 #SC=scheme
 SC=scheme
 TEST_FILE=load_and_test.ss
-RUNTIME=runtime2
+RUNTIME=runtime
 #-- Rules --#
 
 # The main point of this file is to run the tests

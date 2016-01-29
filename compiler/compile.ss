@@ -46,7 +46,10 @@
   (with-output-to-file "t.s"
     thunk 
     'replace)
-  (unless (zero? (system (format "cc -m64 ~{~s ~} -g -o ~a ~a ~{runtime/~s ~}" (debug-flags) out-file asm-file runtime-files)))
+  (unless (zero? 
+            (system 
+              (format "cc -m64 ~{~s ~} -g -o ~a ~a ~{runtime/~s ~}" 
+                      (debug-flags) out-file asm-file runtime-files)))
     (error 'assemble "assembly failed"))
   "./t")
 

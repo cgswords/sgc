@@ -51,7 +51,8 @@ typedef long ptr;
 #define CDR(x)          (*(ptr *)(UNTAG(x,tag_pair) + disp_cdr))
 
 #define VECTORLENGTH(x) (* (ptr *)(UNTAG(x,tag_vector) + disp_vector_length))
-#define VECTORDATA(x)   (*(ptr *)(UNTAG(x,tag_vector) + disp_vector_data))
+/* I changed Vector data to not deref the pointer it was causing a segfault in the printer -ak */
+#define VECTORDATA(x)   ( (ptr *)(UNTAG(x,tag_vector) + disp_vector_data))
 #define VECSIZE(x)      ((1 + UNFIX(VECTORLENGTH(x))))
 
 #define PROCCODE(x)     (*((ptr *)(UNTAG(x,tag_procedure)) + disp_procedure_code))
