@@ -70,7 +70,7 @@ ptr* guarded_area(long n) {  /* n must be page aligned */
 
   /* allocate, leaving room for guard pages */
   addr = (char *)mmap(NULL, (size_t)(n + (2 * pagesize)),
-                      PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON,
+                      PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS,
                       -1, 0);
   
   if (addr == (char *)-1) {
@@ -132,7 +132,7 @@ ptr* collect(ptr *sp, ptr *hp, long alloc_size){
       fprintf(stdout, "\tHeap limit: %p\t Alloc Size: %p \n", (void*) limit, (void*) ((long)hp + (alloc_size / sizeof(ptr)))); */
     return hp;
   }else{
-    fprintf(log, "COLLECTING!\n\tHeap head: %p\tHeap limit: %p \t Page: %d\n", 
+    fprintf(log, "COLLECTING!\n\tHeap head: %p\tHeap limit: %p \t Page: %ld\n", 
           (void*) hp, (void*) limit, pagesize);
     
     /* Setup for a collection */

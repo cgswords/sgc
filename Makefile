@@ -25,7 +25,7 @@ test : $(TEST_FILE)
 	$(SC) $(TEST_FILE)
 
 rt2 : 
-	gcc t.s runtime2/cheney.c runtime2/runtime.c runtime2/printer.c
+	gcc -D_XOPEN_SOURCE=700 t.s runtime2/cheney.c runtime2/runtime.c runtime2/printer.c
 
-r1 :
-	gcc t.s runtime/runtime.c runtime/printer.c runtime/collector.c runtime/copygc.c runtime/metrics.c
+rt1 :
+	gcc -D_GNU_SOURCE -D_XOPEN_SOURCE=700 t.s runtime/runtime.c runtime/printer.c runtime/collector.c runtime/copygc.c runtime/metrics.c

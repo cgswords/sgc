@@ -10,7 +10,8 @@
     (framework match)
     (framework helpers)
     (compiler helpers)
-    (compiler expander))
+    ;;(compiler expander)
+  )
 
 (define (prim? e)
     (or (eq? e 'set!) (primitive? e)))
@@ -240,6 +241,7 @@
         [else (list 'let 
                 (zip defn-list (map (lambda (x) '((void))) defn-list)) 
                 `(letrec-syntax ,syntax-list ,body))]))))
+
 
 ;; +-------------------------------------------------------------------------+
 ;; | PASS    | parse-scheme                                                  |

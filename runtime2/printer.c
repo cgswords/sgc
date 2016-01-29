@@ -11,6 +11,7 @@
 #include "tags.h"
 #include "printer.h"
 
+#define _XOPEN_SOURCE 700
 #define SCHEME_PRINTER
 
 #ifdef SCHEME_PRINTER
