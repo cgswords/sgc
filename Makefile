@@ -14,7 +14,7 @@
 #SC=scheme
 SC=scheme
 TEST_FILE=load_and_test.ss
-
+RUNTIME=runtime2
 #-- Rules --#
 
 # The main point of this file is to run the tests
@@ -24,8 +24,8 @@ all : test
 test : $(TEST_FILE)
 	$(SC) $(TEST_FILE)
 
-rt2 : 
-	gcc -D_XOPEN_SOURCE=700 t.s runtime2/cheney.c runtime2/runtime.c runtime2/printer.c
+copygc : 
+	gcc t.s $(RUNTIME)/copygc.c $(RUNTIME)/runtime.c $(RUNTIME)/printer.c $(RUNTIME)/metrics.c
 
-rt1 :
-	gcc -D_GNU_SOURCE -D_XOPEN_SOURCE=700 t.s runtime/runtime.c runtime/printer.c runtime/collector.c runtime/copygc.c runtime/metrics.c
+cheney : 
+	gcc t.s $(RUNTIME)/cheney.c $(RUNTIME)/runtime.c $(RUNTIME)/printer.c
